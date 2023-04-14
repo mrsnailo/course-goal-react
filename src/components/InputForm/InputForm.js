@@ -3,8 +3,9 @@ import Button from "../UI/Button/Button";
 import "./InputForm.css";
 const InputForm = (props) => {
   const [currentName, setCurrentName] = useState("");
-  const [errMsg, setErrMsg] = useState("");
+  const [isValid, setValidity] = useState("true");
   const nameChangeHandler = (event) => {
+    setValidity(true);
     setCurrentName(event.target.value);
   };
 
@@ -19,8 +20,8 @@ const InputForm = (props) => {
 
   const formSubmitHandler = (event) => {
     event.preventDefault();
-    if (!currentName) {
-      setErrMsg("Please enter valid course name!!");
+    if (currentName.trim() == 0) {
+      setValidity(false);
     } else {
       const goals = {
         id: "g" + (Number(LastID(props)) + 1),
@@ -34,15 +35,15 @@ const InputForm = (props) => {
   return (
     <div className="form__wrapper">
       <form onSubmit={formSubmitHandler}>
-        <div className="form_content">
+        <div className={`form_content ${!isValid ? 'err' : ''}`}>
           <label>Course Goal</label>
           <input
+            style={{borderColor: !isValid ? "red" : "black", backgroundColor: !isValid ? "salmon" : "transparent"}}
             onChange={nameChangeHandler}
             value={currentName}
             type="text"
             name="courseGoal"
           />
-          <span className="err_msg">{errMsg}</span>
           <Button type="submit">Add Course</Button>
         </div>
       </form>

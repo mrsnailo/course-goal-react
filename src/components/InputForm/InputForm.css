@@ -30,9 +30,7 @@
   border-color: #8b005d;
 }
 
-.form_content .err_msg{
-  font-weight: 400;
-  font-size: 14px;
-  margin: 8px 0;
-  color: red;
+.form_content.err input{
+  background: salmon;
+  border: 2px solid red;
 }

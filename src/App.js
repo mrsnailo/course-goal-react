@@ -12,14 +12,14 @@ const App = () => {
   ]);
   const handleCourseData = (datalist) => {
     setGoalList((prevGoals) => {
-      console.log(datalist);
+      // console.log(datalist);
       const updatesGoals = [...prevGoals];
       updatesGoals.unshift(datalist);
       return updatesGoals;
     });
   };
   const deleteItemHandler = (id) => {
-    console.log("executes for id : " + id);
+    // console.log("executes for id : " + id);
     setGoalList((prevList) => {
       return prevList.filter((goal) => goal.id !== id);
     });
