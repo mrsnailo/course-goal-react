@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import Button from "../UI/Button/Button";
-import "./InputForm.css";
+import styles from "./InputForm.module.css";
 const InputForm = (props) => {
   const [currentName, setCurrentName] = useState("");
   const [isValid, setValidity] = useState("true");
@@ -35,10 +35,10 @@ const InputForm = (props) => {
   return (
     <div className="form__wrapper">
       <form onSubmit={formSubmitHandler}>
-        <div className={`form_content ${!isValid ? 'err' : ''}`}>
+        <div className={`${styles.form_content} ${!isValid && styles.err} `}>
           <label>Course Goal</label>
           <input
-            style={{borderColor: !isValid ? "red" : "black", backgroundColor: !isValid ? "salmon" : "transparent"}}
+            // style={{borderColor: !isValid ? "red" : "black", backgroundColor: !isValid ? "salmon" : "transparent"}}
             onChange={nameChangeHandler}
             value={currentName}
             type="text"
